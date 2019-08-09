@@ -1,8 +1,11 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 10px "Lucida Grande", Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  border:none;
 }
 
 a {
   color: #00B7FF;
+  text-decoration: none;
+  
 }
