@@ -1,11 +1,15 @@
+
+
+
 <div class="maincontent">
+
     <div class="password_enrty_div mb-1">
         <div class="row m-1">
             <button type="button" class="btn btn-outline-primary col-1" data-toggle="collapse"
                 data-target="#password_input">Add Info <i class='fas fa-angle-right'></i></button>
             <div id="password_input" class="collapse col-10">
                 {{!-- start of input form --}}
-                <form>
+                <form action="/passwords" method="POST"> 
                     <div class="form-row align-items-center">
                         <div class="col-sm-3 my-1">
                             <label class="sr-only" for="inlineFormSystemName">System Name</label>
@@ -31,10 +35,17 @@
                         </div>
                     </div>
                 </form>
+     
 
                 {{!-- end of input form --}}
             </div>
         </div>
+                   {{!-- catering for server side errors --}}
+                {{#each errors}}
+<div class="alert alert-danger">{{text}}</div>
+{{else}}
+
+{{/each }}
         <hr>
     </div>
     <div class="results_div">
