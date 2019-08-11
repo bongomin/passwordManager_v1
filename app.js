@@ -35,7 +35,6 @@ const Password = mongoose.model('passwords')
 // date middleware
 app.use( (req,res,next) => {
   console.log(Date.now());
-  req.name = 'danny Daniels';
   next();
 });
 
@@ -56,7 +55,9 @@ app.engine('hbs', hbs({
 
 // body parser middleware
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded(
+  { extended: false })
+  )
 app.use(bodyParser.json())
 
 
