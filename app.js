@@ -74,7 +74,7 @@ app.use('/about',aboutRouter);
 
 // add password form
 app.get('/passwords/add' ,(req,res) => {
-  res.render('home');
+  res.render('/');
 })
 
 // process form
@@ -94,11 +94,22 @@ app.post('/passwords', (req,res) => {
     res.render('home' ,{
       errors : errors,
       systemName : req.body.systemName,
-      userName : req.body.username,
+      userName : req.body.userName,
       passWord : req.body.passWord
     });
   } else {
-    res.send('passed');
+    const newUser ={
+      systemName : req.body.systemName,
+      userName : req.body.userName,
+      passWord : req.body.passWord
+
+    }
+    new Password(newUser)
+    .save()
+    .then( password => {
+      res.redirect('/');
+
+    })
   }
 });
 
