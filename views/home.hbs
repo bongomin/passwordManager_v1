@@ -9,12 +9,11 @@
                 data-target="#password_input">Add Info <i class='fas fa-angle-right'></i></button>
             <div id="password_input" class="collapse col-10">
                 {{!-- start of input form --}}
-                <form action="/passwords" method="POST"> 
+                <form action="/passwords" method="post"> 
                     <div class="form-row align-items-center">
                         <div class="col-sm-3 my-1">
                             <label class="sr-only" for="inlineFormSystemName">System Name</label>
-                            <input type="text" name="systemName" class="form-control" id="inlineFormSystemName"
-                                placeholder="System Name">
+                            <input type="text" name="systemName" class="form-control" placeholder="System Name" />
                         </div>
                         <div class="col-sm-3 my-1">
                             <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
