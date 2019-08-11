@@ -16,11 +16,12 @@ const PasswordSchema = new Schema({
         type:String,
         required :true
     },
-    date :{
+    date: {
         type: Date,
-        default : Date.now
-    }
+        default: Date.now
+      }
 
 });
 
-mongoose.model('passwords',PasswordSchema);
+// mongoose.model('passwords',PasswordSchema);
+mongoose.model('passwords', PasswordSchema);

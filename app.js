@@ -4,8 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('express-handlebars');
+var  bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var bodyParser= require('body-parser');
 
 
 var indexRouter = require('./routes/index');
@@ -19,16 +19,17 @@ var app = express();
 // map global promisies / get reed of worning
 mongoose.Promise = global.Promise;
 // connection to mongoose
-mongoose.connect('mongodb://localhost/password_manager',{
+mongoose.connect('mongodb://localhost/password-manager', {
   useNewUrlParser: true
+  // useMongoClient: true
 })
-.then(() => console.log('Mongo Database Connected....'))
-.catch(err => console.log(err))
+.then(() => console.log('MongoDB Connected...'))
+.catch(err => console.log(err));
 
-//Load Password model
+
+// Load Idea Model
 require('./models/Password');
-
-const Password = mongoose.model('passwords')
+const Password = mongoose.model('passwords');
 
 
 
@@ -53,11 +54,8 @@ app.engine('hbs', hbs({
   ]
 }));
 
-// body parser middleware
-
-app.use(bodyParser.urlencoded(
-  { extended: false })
-  )
+// Body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 
@@ -75,7 +73,7 @@ app.use('/about',aboutRouter);
 
 
 // add password form
-app.get('passwords/add' ,(req,res) => {
+app.get('/passwords/add' ,(req,res) => {
   res.render('home');
 })
 
@@ -94,7 +92,7 @@ app.post('/passwords', (req,res) => {
  
   if(errors.length >0){
     res.render('home' ,{
-      errors : errors ,
+      errors : errors,
       systemName : req.body.systemName,
       userName : req.body.username,
       passWord : req.body.passWord
@@ -102,7 +100,7 @@ app.post('/passwords', (req,res) => {
   } else {
     res.send('passed');
   }
-})
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
