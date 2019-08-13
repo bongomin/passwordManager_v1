@@ -1,10 +1,29 @@
 
-{{#each passwords}}
+
   <div class="card card-body mb-2">
-   <h4>{{systemName}}</h4>
-    <p>{{userName}}</p>
-    <p>{{passWord}}</p>
-  </div>
-{{else}}
+    <table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">System Name </th>
+      <th scope="col">User NAme</th>
+      <th scope="col">password</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each passwords}}
+    <tr>
+  
+        <td>{{systemName}}</td>
+        <td>{{userName}}</td>
+        <td>{{passWord}}</td>
+        <td>Edit</td>
+        <td>Delete</td>
+        {{else}}
   <p>No video ideas listed</p>
 {{/each}}
+    </tr>
+  </tbody>
+</table>
+  </div>
