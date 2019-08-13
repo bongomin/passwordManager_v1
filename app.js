@@ -76,8 +76,12 @@ app.use('/about',aboutRouter);
 app.get('/passwords/add' ,(req,res) => {
   res.render('/');
 })
+ //Editing password
+app.get('/passwords/add' ,(req,res) => {
+  res.render('/');
+})
 
-// Idea password Page
+//Password /  password Page
 app.get('/passwords', (req, res) => {
   Password.find({})
     .sort({date:'desc'})
@@ -87,6 +91,7 @@ app.get('/passwords', (req, res) => {
       });
     });
 });
+
   
 
 
