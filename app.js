@@ -27,7 +27,7 @@ mongoose.connect('mongodb://localhost/password-manager', {
 .catch(err => console.log(err));
 
 
-// Load Idea Model
+// Load Password Model
 require('./models/Password');
 const Password = mongoose.model('passwords');
 
@@ -77,6 +77,19 @@ app.get('/passwords/add' ,(req,res) => {
   res.render('/');
 })
 
+// Idea password Page
+app.get('/passwords', (req, res) => {
+  Password.find({})
+    .sort({date:'desc'})
+    .then(passwords => {
+      res.render('passwords/index', {
+        passwords:passwords
+      });
+    });
+});
+  
+
+
 // process form
 app.post('/passwords', (req,res) => {
   let errors = [];
@@ -107,7 +120,7 @@ app.post('/passwords', (req,res) => {
     new Password(newUser)
     .save()
     .then( password => {
-      res.redirect('/');
+      res.redirect('/passwords');
 
     })
   }
