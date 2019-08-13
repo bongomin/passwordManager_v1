@@ -77,8 +77,15 @@ app.get('/passwords/add' ,(req,res) => {
   res.render('/');
 })
  //Editing password
-app.get('/passwords/add' ,(req,res) => {
-  res.render('/');
+ app.get('/passwords/edit/:id' ,(req,res) => {
+   Password.findOne({
+     _id : req.params.id
+   })
+   .then(password => {
+    res.render('passwords/edit' , {
+      password : password
+    });
+   })
 })
 
 //Password /  password Page

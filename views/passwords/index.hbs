@@ -1,34 +1,35 @@
+<div class="card card-body mb-2">
+  <table class="table table-hover table">
+    <thead>
+      <tr>
+        <th scope="col">System Name </th>
+        <th scope="col">User NAme</th>
+        <th scope="col">password</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each passwords}}
+      <tr>
 
-
-  <div class="card card-body mb-2">
-    <table class="table table-hover table">
-  <thead>
-    <tr>
-      <th scope="col">System Name </th>
-      <th scope="col">User NAme</th>
-      <th scope="col">password</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each passwords}}
-    <tr>
-  
         <td>{{systemName}}</td>
         <td>{{userName}}</td>
         <td>{{passWord}}</td>
-         <td><button type="button" data-toggle="modal" data-target="#edit" data-uid="2" class="update btn btn-warning btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
-		            <td><button type="button" data-toggle="modal" data-target="#delete" data-uid="2" class="delete btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
-        {{else}}
-  <p>No video ideas listed</p>
-{{/each}}
-    </tr>
-  </tbody>
-</table>
-  </div>
 
-  {{!-- dialogue messages divs --}}
+        <td><a href="/passwords/edit/{{id}}" type="button" 
+            class="update btn btn-warning btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+        <td><a href="#" type="button" data-toggle="modal" data-target="#delete" data-uid="2"
+            class="delete btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+        {{else}}
+        <p>No video ideas listed</p>
+        {{/each}}
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{{!-- dialogue messages divs --}}
 
 <div id="edit" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -38,17 +39,17 @@
         <h4 class="modal-title">Update Password </h4>
       </div>
       <div class="modal-body">
-           <form>
-  <div class="form-group">
-    <input type="text" class="form-control" name="systemName"  placeholder="System Name">
-  </div>
-  <div class="form-group">
-    <input type="text" class="form-control" name="userName"  placeholder="User Name">
-  </div>
-  <div class="form-group">
-    <input type="text" class="form-control" name="passWord"  placeholder="Password">
-  </div>
-</form>
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control" name="systemName" placeholder="System Name">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="userName" placeholder="User Name">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="passWord" placeholder="Password">
+          </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" id="up" class="btn btn-warning" data-dismiss="modal">Update</button>
