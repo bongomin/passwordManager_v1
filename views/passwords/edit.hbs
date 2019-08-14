@@ -1,7 +1,8 @@
 <div class=" col-6 m-auto card card-body">
   <h4>Edit Password</h4>
   <hr>
-  <form action="/passwords" method="post">
+  <form action="/passwords/{{password.id}}?_method=PUT" method="post">
+  <input type="hidden" name="_method" value="PUT">
     <div class="form-group">
       <input type="text" name="systemName" class="form-control" value="{{password.systemName}}" />
     </div>

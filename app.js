@@ -6,6 +6,7 @@ var logger = require('morgan');
 var hbs = require('express-handlebars');
 var  bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var methodOverride = require('method-override');
 
 
 var indexRouter = require('./routes/index');
@@ -29,7 +30,7 @@ mongoose.connect('mongodb://localhost/password-manager', {
 
 // Load Password Model
 require('./models/Password');
-const Password = mongoose.model('passwords');
+var Password = mongoose.model('passwords');
 
 
 
@@ -58,6 +59,10 @@ app.engine('hbs', hbs({
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+// methodOverride middleawre used in put requests
+
+app.use(methodOverride('_method'))
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -76,7 +81,7 @@ app.use('/about',aboutRouter);
 app.get('/passwords/add' ,(req,res) => {
   res.render('/');
 })
- //Editing password
+ //fetching data from db to the edit fields password
  app.get('/passwords/edit/:id' ,(req,res) => {
    Password.findOne({
      _id : req.params.id
@@ -102,7 +107,7 @@ app.get('/passwords', (req, res) => {
   
 
 
-// process form
+//  Add process form
 app.post('/passwords', (req,res) => {
   let errors = [];
   if(!req.body.systemName){
@@ -138,6 +143,35 @@ app.post('/passwords', (req,res) => {
   }
 });
 
+// Edit form process / request /put request
+
+app.put('/passwords/:id' , (req,res) =>{
+  Password.findOne({
+    _id : req.params.id
+  })
+  .then(password =>{
+    // getting new password updated
+    password.systemName = req. body.systemName;
+    password.userName = req.body.userName;
+    password.passWord = req.body.passWord;
+    password.save()
+    .then(password =>{
+      res.redirect('/passwords')
+    });
+  });
+});
+
+
+// Delete Passwords /delete requests
+app.delete('/passwords/:id', (req, res) => {
+  Password.remove({_id: req.params.id})
+    .then(() => {
+      res.redirect('/passwords');
+    });
+});
+
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -150,6 +184,10 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
+
+
+
+
   res.status(err.status || 500);
   res.render('error');
 });
