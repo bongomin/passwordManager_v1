@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-6 mx-auto">
+        <card class="card card-body">
+            <img class="logo" src="/img/key_logo.png"  alt="Password Manager Logo">
+            <h3 class="text-center">Account Register</h3>
+            <form action="/users/register" method="post">
+                <div class="form-group">
+                  <label for="fname">First Name</label>
+                  <input type="text" value="{{firstName}}" name="firstName" class="form-control" required>
+              </div>
+              <div class="form-group">
+                  <label for="sname">Second name</label>
+                  <input type="text" value="{{secondName}}" name="secondName" class="form-control" required>
+              </div>
+              <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" value="{{email}}" name="email" class="form-control" required>
+              </div>
+               <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" value="{{password}}" name="password" class="form-control" required>
+              </div>
+               <div class="form-group">
+                  <label for="password2"> Confirm Password</label>
+                  <input type="password" name="password2" value="{{password2}}" class="form-control" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </card>
+    </div>
+</div>

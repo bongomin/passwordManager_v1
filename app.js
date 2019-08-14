@@ -21,6 +21,9 @@ var useRouter = require('./routes/use')
 
 var app = express();
 
+// Load routes
+var usersRouter = require('./routes/users')
+
 // map global promisies / get reed of worning
 mongoose.Promise = global.Promise;
 // connection to mongoose
@@ -197,6 +200,11 @@ app.delete('/passwords/:id', (req, res) => {
       res.redirect('/passwords');
     });
 });
+
+
+// use Routes
+
+app.use('/users',usersRouter);
 
 
 
