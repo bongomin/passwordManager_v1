@@ -2,7 +2,7 @@
   <h4>Edit Password</h4>
   <hr>
   <form action="/passwords/{{password.id}}?_method=PUT" method="post">
-  <input type="hidden" name="_method" value="PUT">
+    <input type="hidden" name="_method" value="PUT">
     <div class="form-group">
       <input type="text" name="systemName" class="form-control" value="{{password.systemName}}" />
     </div>
@@ -12,6 +12,6 @@
     <div class="form-group">
       <input type="text" name="passWord" class="form-control" value="{{password.passWord}}">
     </div>
-     <button type="submit" class="btn btn-primary"> <i class="fa fa-refresh" aria-hidden="true"></i>&nbsp Update</button>
+    <button type="submit" class="btn btn-primary"> <i class="fa fa-refresh" aria-hidden="true"></i>&nbsp Update</button>
   </form>
 </div>

@@ -1,22 +1,21 @@
 body {
   font: 10px "Lucida Grande", Helvetica, Arial, sans-serif;
   text-decoration: none;
-  border:none;
+  border: none;
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
   text-decoration: none;
-  
 }
 
-table{
-  font-family:'Calibri';
-  font-size:15px;
-  background-color:#fff;
-  color:#333;
+table {
+  font-family: "Calibri";
+  font-size: 15px;
+  background-color: #fff;
+  color: #333;
 }
-.modal-header{
-  background-color:#333;
-  color:#fff;
+.modal-header {
+  background-color: #333;
+  color: #fff;
 }

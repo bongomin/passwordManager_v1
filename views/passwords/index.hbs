@@ -12,19 +12,18 @@
     <tbody>
       {{#each passwords}}
       <tr>
-
         <td>{{systemName}}</td>
         <td>{{userName}}</td>
         <td>{{passWord}}</td>
 
-        <td><a href="/passwords/edit/{{id}}" type="button" 
-            class="update btn btn-warning btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+        <td><a href="/passwords/edit/{{id}}" type="button" class="update btn btn-warning btn-sm"><i class="fa fa-pencil"
+              aria-hidden="true"></i></a></td>
         <td>
-           <form method="post" action="/passwords/{{id}}?_method=DELETE">
-      <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" class="btn btn-danger btn-sm" value="Delete">
-    </form>
-            </td>
+          <form method="post" action="/passwords/{{id}}?_method=DELETE">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+          </form>
+        </td>
         {{else}}
         <p>No video ideas listed</p>
         {{/each}}
