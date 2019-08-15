@@ -1,6 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
+var bcrypt = require('bcryptjs');
+var passport = require('passport');
+
+// Load usermodel containing users data schema
+
+require('../models/users');
+var User = mongoose.model('users');
 
 // Users login Route
 router.get('/login' , (req,res) => {
@@ -29,14 +36,45 @@ router.post('/register',(req,res) => {
       secondName : req.body.secondName,
       email: req.body.email,
       password : req.body.password,
-      password2 :req.body.password2
+      password2 : req.body.password2
 
     });
-  }else{
-    res.send('passed');
+  }else {
+    User.findOne({email: req.body.email})
+      .then(user => {
+        if(user){
+          req.flash('error_msg', 'Email already regsitered');
+          res.redirect('/users/register');
+        } else {
+          const newUser = new User({
+            firstName : req.body.firstName,
+            secondName : req.body.secondName,
+            email: req.body.email,
+            password : req.body.password,
+            password2 : req.body.password2
+          });
+          
+          bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(newUser.password, salt, (err, hash) => {
+              if(err) throw err;
+              newUser.password = hash;
+              newUser.save()
+                .then(user => {
+                  req.flash('succes_msg', 'You are now registered and can log in');
+                  res.redirect('/users/login');
+                })
+                .catch(err => {
+                  console.log(err);
+                  return;
+                });
+            });
+          });
 
+      }
+    });
+   
   }
-})
+});
 
 
 module.exports = router;
