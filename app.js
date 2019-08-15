@@ -74,12 +74,15 @@ app.use(bodyParser.json())
 
 app.use(methodOverride('_method'))
 
-// express ession middle ware
+// express session middle ware
 app.use(session({
   secret: 'Secret',
   resave: true,
   saveUninitialized: true,
-}))
+}));
+// passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 // flash middleware
@@ -90,6 +93,9 @@ app.use(function(req,res,next){
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
+  res.locals.user = req.user || null;
+
+
   next();
 })
 
