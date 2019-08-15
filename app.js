@@ -6,6 +6,7 @@ var logger = require('morgan');
 var hbs = require('express-handlebars');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var passport = require('passport');
 var methodOverride = require('method-override');
 var flash = require('connect-flash');
 var session = require('express-session');
@@ -23,6 +24,9 @@ var app = express();
 
 // Load routes
 var usersRouter = require('./routes/users')
+
+// Passport Config model Loaded
+require('./config/passport')(passport);
 
 // map global promisies / get reed of worning
 mongoose.Promise = global.Promise;
