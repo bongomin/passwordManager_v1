@@ -11,6 +11,9 @@ var methodOverride = require('method-override');
 var flash = require('connect-flash');
 var session = require('express-session');
 
+// Load helper to protect routes 
+const {ensureAuthenticated} = require('./helpers/auth');
+
 
 
 
@@ -115,7 +118,7 @@ app.use('/about', aboutRouter);
 
 
 // add password form
-app.get('/passwords/add', (req, res) => {
+app.get('/passwords/add',ensureAuthenticated, (req, res) => {
   res.render('/');
 })
 //fetching data from db to the edit fields password
@@ -131,7 +134,7 @@ app.get('/passwords/edit/:id', (req, res) => {
 })
 
 //Password /  password Page
-app.get('/passwords', (req, res) => {
+app.get('/passwords',ensureAuthenticated, (req, res) => {
   Password.find({})
     .sort({ date: 'desc' })
     .then(passwords => {
