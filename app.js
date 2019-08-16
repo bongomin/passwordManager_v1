@@ -140,7 +140,7 @@ app.get('/passwords/edit/:id', (req, res) => {
 
 //Password /  password Page
 app.get('/passwords',ensureAuthenticated, (req, res) => {
-  Password.find({})
+  Password.find({user: req.user.id})
     .sort({ date: 'desc' })
     .then(passwords => {
       res.render('passwords/index', {
@@ -176,7 +176,8 @@ app.post('/passwords', (req, res) => {
     const newUser = {
       systemName: req.body.systemName,
       userName: req.body.userName,
-      passWord: req.body.passWord
+      passWord: req.body.passWord,
+      user:req.user.id
 
     }
     new Password(newUser)
