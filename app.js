@@ -19,7 +19,7 @@ const {ensureAuthenticated} = require('./helpers/auth');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var homeRouter = require('./routes/home');
+var addRouter = require('./routes/add');
 var aboutRouter = require('./routes/about');
 var useRouter = require('./routes/use')
 
@@ -111,10 +111,15 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/index', indexRouter);
+app.use('/', usersRouter);
 app.use('/users', usersRouter);
-app.use('/', homeRouter);
+app.use('/add', addRouter);
 app.use('/use', useRouter);
 app.use('/about', aboutRouter);
+
+app.get('/add',ensureAuthenticated,(req,res) =>{
+  res.render('add');
+})
 
 
 // add password form
