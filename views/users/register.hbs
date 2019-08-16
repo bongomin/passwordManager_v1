@@ -1,8 +1,8 @@
-<div class="row">
-    <div class="col-6 mx-auto">
-        <card class="card card-body">
+<div class="row mt-2">
+    <div class="col-6 mx-auto mt-4">
+        <card class="card card-body" id="registerdiv">
             <img class="logo" src="/img/key_logo.png"  alt="Password Manager Logo">
-            <h3 class="text-center">Account Register</h3>
+            <h2 class="text-center">Account Registration</h2>
             <form action="/users/register" method="post">
                 <div class="form-group">
                   <label for="fname">First Name</label>
@@ -24,7 +24,7 @@
                   <label for="password2"> Confirm Password</label>
                   <input type="password" name="password2" value="{{password2}}" class="form-control" required>
               </div>
-              <button type="submit" class="btn btn-primary">Register</button>
+              <button type="submit" class="btn btn-primary"><i class="fa fa-registered" aria-hidden="true"></i> &nbsp Register</button>
             </form>
         </card>
     </div>

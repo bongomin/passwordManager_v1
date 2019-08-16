@@ -10,7 +10,7 @@ require('../models/users');
 var User = mongoose.model('users');
 
 // Users login Route
-router.get('/login', (req, res) => {
+router.get('/', (req, res) => {
   res.render('users/login');
 })
 
@@ -70,8 +70,8 @@ router.post('/register', (req, res) => {
               newUser.password = hash;
               newUser.save()
                 .then(user => {
-                  req.flash('succes_msg', 'You are now registered and can log in');
-                  res.redirect('/users/login');
+                  req.flash('success_msg', 'You are now registered and can log in');
+                  res.redirect('/');
                 })
                 .catch(err => {
                   console.log(err);
@@ -91,7 +91,7 @@ router.post('/register', (req, res) => {
 router.get('/logout', (req,res) => {
   req.logOut();
   req.flash('success_msg','You are Logged Out of the system')
-  res.redirect('/users/login')
+  res.redirect('/')
 })
 
 
