@@ -7,7 +7,7 @@ require('../models/Password');
 const Password = mongoose.model('passwords');
 
 /* GET home page. */
-router.get('/add', function(req, res) {
+router.get('/add', function (req, res) {
   res.render("add");
 });
 

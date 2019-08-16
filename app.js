@@ -12,7 +12,7 @@ var flash = require('connect-flash');
 var session = require('express-session');
 
 // Load helper to protect routes 
-const {ensureAuthenticated} = require('./helpers/auth');
+const { ensureAuthenticated } = require('./helpers/auth');
 
 
 
@@ -92,7 +92,7 @@ app.use(passport.session());
 app.use(flash());
 
 // Global Variables for flash Messages
-app.use(function(req,res,next){
+app.use(function (req, res, next) {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
@@ -117,13 +117,13 @@ app.use('/add', addRouter);
 app.use('/use', useRouter);
 app.use('/about', aboutRouter);
 
-app.get('/add',ensureAuthenticated,(req,res) =>{
+app.get('/add', ensureAuthenticated, (req, res) => {
   res.render('add');
 })
 
 
 // add password form
-app.get('/passwords/add',ensureAuthenticated, (req, res) => {
+app.get('/passwords/add', ensureAuthenticated, (req, res) => {
   res.render('/');
 })
 //fetching data from db to the edit fields password
@@ -139,8 +139,8 @@ app.get('/passwords/edit/:id', (req, res) => {
 })
 
 //Password /  password Page
-app.get('/passwords',ensureAuthenticated, (req, res) => {
-  Password.find({user: req.user.id})
+app.get('/passwords', ensureAuthenticated, (req, res) => {
+  Password.find({ user: req.user.id })
     .sort({ date: 'desc' })
     .then(passwords => {
       res.render('passwords/index', {
@@ -177,13 +177,13 @@ app.post('/passwords', (req, res) => {
       systemName: req.body.systemName,
       userName: req.body.userName,
       passWord: req.body.passWord,
-      user:req.user.id
+      user: req.user.id
 
     }
     new Password(newUser)
       .save()
       .then(password => {
-        req.flash('success_msg' , "You have added system password info to the system ")
+        req.flash('success_msg', "You have added system password info to the system ")
         res.redirect('/passwords');
 
       })
@@ -203,7 +203,7 @@ app.put('/passwords/:id', (req, res) => {
       password.passWord = req.body.passWord;
       password.save()
         .then(password => {
-          req.flash('success_msg' , "You have SuccessFully Edited the system info ")
+          req.flash('success_msg', "You have SuccessFully Edited the system info ")
 
           res.redirect('/passwords')
         });
@@ -215,7 +215,7 @@ app.put('/passwords/:id', (req, res) => {
 app.delete('/passwords/:id', (req, res) => {
   Password.remove({ _id: req.params.id })
     .then(() => {
-      req.flash('success_msg' , "You have SuccessFully Deleted The System's Password Informations")
+      req.flash('success_msg', "You have SuccessFully Deleted The System's Password Informations")
       res.redirect('/passwords');
     });
 });
@@ -223,7 +223,7 @@ app.delete('/passwords/:id', (req, res) => {
 
 // use Routes
 
-app.use('/users',usersRouter);
+app.use('/users', usersRouter);
 
 
 

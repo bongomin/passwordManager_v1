@@ -1,18 +1,20 @@
-  <nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-2" id="navbar">
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-2" id="navbar">
   <a class="navbar-brand" href="/">Password Manager</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-     {{!-- all that is in the if statement can only be seen when logged in --}}
+      {{!-- all that is in the if statement can only be seen when logged in --}}
       {{#if user}}
-       <li class="nav-item">
-        <a class="nav-link " href="/add"> <i class="fa fa-plus-square-o" style="font-size: 20px;" aria-hidden="true"></i>&nbsp Add Password</a>
+      <li class="nav-item">
+        <a class="nav-link " href="/add"> <i class="fa fa-plus-square-o" style="font-size: 20px;"
+            aria-hidden="true"></i>&nbsp Add Password</a>
       </li>
       {{else}}
-        <li class="nav-item active">
+      <li class="nav-item active">
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
@@ -23,29 +25,33 @@
       </li>
       {{/if }}
     </ul>
-    
+
     <ul class="navbar-nav ml-auto">
       {{#if user}}
-       <li class="nav-item">
-        <a class="nav-link " href="/passwords"> <i class="fa fa-key" style="font-size: 20px;" aria-hidden="true"></i>&nbsp My Passwords</a>
-      </li>
-        <li class="nav-item">
-        <a class="nav-link " href="/passwords"><i class="fa fa-venus-mars" style="font-size: 20px;" aria-hidden="true"></i>
-&nbsp System Passwords</a>
+      <li class="nav-item">
+        <a class="nav-link " href="/passwords"> <i class="fa fa-key" style="font-size: 20px;"
+            aria-hidden="true"></i>&nbsp My Passwords</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="/users/logout"> <i class="fa fa-sign-out" style="font-size: 20px;" aria-hidden="true"></i>&nbspLogout</a>
+        <a class="nav-link " href="/passwords"><i class="fa fa-venus-mars" style="font-size: 20px;"
+            aria-hidden="true"></i>
+          &nbsp System Passwords</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="/users/logout"> <i class="fa fa-sign-out" style="font-size: 20px;"
+            aria-hidden="true"></i>&nbspLogout</a>
       </li>
 
       {{else}}
-       <li class="nav-item">
-        <a class="nav-link " href="/users/register"><i class="fa fa-registered" style="font-size: 20px;"></i>&nbsp Register</a>
+      <li class="nav-item">
+        <a class="nav-link " href="/users/register"><i class="fa fa-registered" style="font-size: 20px;"></i>&nbsp
+          Register</a>
       </li>
 
       {{/if}}
-      
-     
-      
+
+
+
 
     </ul>
   </div>
