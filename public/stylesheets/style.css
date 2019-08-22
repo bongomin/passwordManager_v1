@@ -1,11 +1,38 @@
 body {
+  font-size: 11px !important;
   font: 10px "Lucida Grande", Helvetica, Arial, sans-serif;
   text-decoration: none;
-  border:none;
+  border: none;
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
   text-decoration: none;
-  
+}
+
+table {
+  font-family: "Calibri";
+  font-size: 15px;
+  background-color: #fff;
+  color: #333;
+}
+.modal-header {
+  background-color: #333;
+  color: #fff;
+}
+
+.logo {
+  width: 80px;
+  margin: auto;
+}
+#navbar {
+  -webkit-box-shadow: 0 3px 2px #777;
+  -moz-box-shadow: 0 3px 2px #777;
+  box-shadow: 0 3px 2px #777;
+}
+#logindiv,
+#registerdiv {
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }

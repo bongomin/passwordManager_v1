@@ -1,0 +1,82 @@
+<div class="card card-body mb-2">
+  <h3> <i class="fa fa-key" style="font-size: 25px; color:blue;" aria-hidden="true"></i>&nbsp Systems Informations
+    (<small>Passwords ,Users and system Names</small> )</h3>
+  <table class="table table-hover table">
+    <thead>
+      <tr class="bg-primary" style="color: white;">
+        <th scope="col">System Name </th>
+        <th scope="col">User NAme</th>
+        <th scope="col">password</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each passwords}}
+      <tr>
+        <td>{{systemName}}</td>
+        <td>{{userName}}</td>
+        <td>{{passWord}}</td>
+
+        <td><a href="/passwords/edit/{{id}}" type="button" class="update btn btn-warning btn-sm"><i class="fa fa-pencil"
+              aria-hidden="true"></i></a></td>
+        <td>
+          <form method="post" action="/passwords/{{id}}?_method=DELETE">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+          </form>
+        </td>
+        {{else}}
+        <p>No video ideas listed</p>
+        {{/each}}
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{{!-- dialogue messages divs --}}
+
+<div id="edit" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title">Update Password </h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control" name="systemName" placeholder="System Name">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="userName" placeholder="User Name">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="passWord" placeholder="Password">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="up" class="btn btn-warning" data-dismiss="modal">Update</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="delete" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title">Delete Data</h4>
+      </div>
+      <div class="modal-body">
+        <strong>Are you sure you want to delete this data?</strong>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="del" class="btn btn-danger" data-dismiss="modal">Delete</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

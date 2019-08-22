@@ -3,23 +3,26 @@ const Schema = mongoose.Schema;
 
 // create a schema for passwords
 
-const PasswordSchema = new Schema({
-    systemName: {
+const UsersSchema = new Schema({
+    firstName: {
         type: String,
         required: true
     },
-    userName: {
+    secondName: {
         type: String,
         required: true
     },
-    passWord: {
+    email: {
         type: String,
         required: true
     },
-    user: {
+    password: {
         type: String,
         required: true
-
+    },
+    password2: {
+        type: String,
+        required: true
     },
     date: {
         type: Date,
@@ -27,6 +30,4 @@ const PasswordSchema = new Schema({
     }
 
 });
-
-// mongoose.model('passwords',PasswordSchema);
-mongoose.model('passwords', PasswordSchema);
+mongoose.model('users', UsersSchema);
