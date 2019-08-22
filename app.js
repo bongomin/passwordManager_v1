@@ -31,10 +31,15 @@ var usersRouter = require('./routes/users')
 // Passport Config model Loaded
 require('./config/passport')(passport);
 
+// DB config import
+
+var db = require('./config/database');
+
 // map global promisies / get reed of worning
 mongoose.Promise = global.Promise;
 // connection to mongoose
-mongoose.connect('mongodb://localhost/password-manager', {
+mongoose.connect(db.mongoURI, {
+  // mongodb+srv://password-manager:<password>@passwordmanager1-xfw49.mongodb.net/test?retryWrites=true&w=majority
   useNewUrlParser: true
   // useMongoClient: true
 })
