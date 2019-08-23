@@ -4,6 +4,10 @@ PASSWORD MANAGING APP
 SA mall password Managment app built with the MERN stack. This is part of my "MERN Stack Front To Back developed by Bongomin Daniel" 
 
 Quick Start
+
+# Clone the project
+git clone https://github.com/bongomin/passwordManager_v1.git
+
 # Install dependencies for server
 npm install
 
