@@ -9,6 +9,9 @@
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       {{!-- all that is in the if statement can only be seen when logged in --}}
       {{#if user}}
+       <li class="nav-item">
+        <a class="nav-link" href="/use">Use</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link " href="/add"> <i class="fa fa-plus-square-o" style="font-size: 20px;"
             aria-hidden="true"></i>&nbsp Add Password</a>
@@ -16,9 +19,6 @@
       {{else}}
       <li class="nav-item active">
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/use">Use</a>
       </li>
       <li class="nav-item">
         <a class="nav-link " href="/about">About</a>
