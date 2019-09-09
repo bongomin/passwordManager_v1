@@ -10,6 +10,8 @@ var passport = require('passport');
 var methodOverride = require('method-override');
 var flash = require('connect-flash');
 var session = require('express-session');
+var passport = require('passport');
+var ActiveDirectoryStrategy = require('passport-activedirectory');
 
 // Load helper to protect routes 
 const { ensureAuthenticated } = require('./helpers/auth');
@@ -43,8 +45,8 @@ mongoose.connect(db.mongoURI, {
   useNewUrlParser: true
   // useMongoClient: true
 })
-  .then(() => console.log('MongoDB Connected...'))
-  .catch(err => console.log(err));
+.then(() => console.log('MongoDB Connected...'))
+.catch(err => console.log(err));
 
 
 // Load Password Model
@@ -71,8 +73,8 @@ app.engine('hbs', hbs({
   partialsDir: [
     //  path to your partials
     path.join(__dirname, 'views/partials'),
-  ]
-}));
+    ]
+  }));
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -136,22 +138,22 @@ app.get('/passwords/edit/:id', (req, res) => {
   Password.findOne({
     _id: req.params.id
   })
-    .then(password => {
-      res.render('passwords/edit', {
-        password: password
-      });
-    })
+  .then(password => {
+    res.render('passwords/edit', {
+      password: password
+    });
+  })
 })
 
 //Password /  password Page
 app.get('/passwords', ensureAuthenticated, (req, res) => {
   Password.find({ user: req.user.id })
-    .sort({ date: 'desc' })
-    .then(passwords => {
-      res.render('passwords/index', {
-        passwords: passwords
-      });
+  .sort({ date: 'desc' })
+  .then(passwords => {
+    res.render('passwords/index', {
+      passwords: passwords
     });
+  });
 });
 
 
@@ -186,12 +188,12 @@ app.post('/passwords', (req, res) => {
 
     }
     new Password(newUser)
-      .save()
-      .then(password => {
-        req.flash('success_msg', "You have added system password info to the system ")
-        res.redirect('/passwords');
+    .save()
+    .then(password => {
+      req.flash('success_msg', "You have added system password info to the system ")
+      res.redirect('/passwords');
 
-      })
+    })
   }
 });
 
@@ -201,17 +203,17 @@ app.put('/passwords/:id', (req, res) => {
   Password.findOne({
     _id: req.params.id
   })
-    .then(password => {
+  .then(password => {
       // getting new password updated
       password.systemName = req.body.systemName;
       password.userName = req.body.userName;
       password.passWord = req.body.passWord;
       password.save()
-        .then(password => {
-          req.flash('success_msg', "You have SuccessFully Edited the system info ")
+      .then(password => {
+        req.flash('success_msg', "You have SuccessFully Edited the system info ")
 
-          res.redirect('/passwords')
-        });
+        res.redirect('/passwords')
+      });
     });
 });
 
@@ -219,10 +221,10 @@ app.put('/passwords/:id', (req, res) => {
 // Delete Passwords /delete requests
 app.delete('/passwords/:id', (req, res) => {
   Password.remove({ _id: req.params.id })
-    .then(() => {
-      req.flash('success_msg', "You have SuccessFully Deleted The System's Password Informations")
-      res.redirect('/passwords');
-    });
+  .then(() => {
+    req.flash('success_msg', "You have SuccessFully Deleted The System's Password Informations")
+    res.redirect('/passwords');
+  });
 });
 
 

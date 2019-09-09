@@ -10,7 +10,7 @@ require('../models/users');
 var User = mongoose.model('users');
 
 // Users login Route
-router.get('/', (req, res) => {
+router.get('/', passport.authenticate('ActiveDirectory', opts, (req, res) => {
   res.render('users/login');
 })
 
@@ -51,37 +51,37 @@ router.post('/register', (req, res) => {
     });
   } else {
     User.findOne({ email: req.body.email })
-      .then(user => {
-        if (user) {
-          req.flash('error_msg', 'Email already regsitered');
-          res.redirect('/users/register');
-        } else {
-          const newUser = new User({
-            firstName: req.body.firstName,
-            secondName: req.body.secondName,
-            email: req.body.email,
-            password: req.body.password,
-            password2: req.body.password2
-          });
+    .then(user => {
+      if (user) {
+        req.flash('error_msg', 'Email already regsitered');
+        res.redirect('/users/register');
+      } else {
+        const newUser = new User({
+          firstName: req.body.firstName,
+          secondName: req.body.secondName,
+          email: req.body.email,
+          password: req.body.password,
+          password2: req.body.password2
+        });
 
-          bcrypt.genSalt(10, (err, salt) => {
-            bcrypt.hash(newUser.password, salt, (err, hash) => {
-              if (err) throw err;
-              newUser.password = hash;
-              newUser.save()
-                .then(user => {
-                  req.flash('success_msg', 'You are now registered and can log in');
-                  res.redirect('/');
-                })
-                .catch(err => {
-                  console.log(err);
-                  return;
-                });
+        bcrypt.genSalt(10, (err, salt) => {
+          bcrypt.hash(newUser.password, salt, (err, hash) => {
+            if (err) throw err;
+            newUser.password = hash;
+            newUser.save()
+            .then(user => {
+              req.flash('success_msg', 'You are now registered and can log in');
+              res.redirect('/');
+            })
+            .catch(err => {
+              console.log(err);
+              return;
             });
           });
+        });
 
-        }
-      });
+      }
+    });
 
   }
 });
