@@ -7,37 +7,43 @@
         <hr>
       </div>
     </div>
-    <table class="table table-hover table">
-      <thead>
-        <tr class="bg-primary" style="color: white;">
-          <th scope="col">System Name </th>
-          <th scope="col">User NAme</th>
-          <th scope="col">password</th>
-          <th scope="col">Edit</th>
-          <th scope="col">Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each passwords}}
-        <tr>
-          <td>{{systemName}}</td>
-          <td>{{userName}}</td>
-          <td>{{passWord}}</td>
+    <div class="container">
+      <div class="row">
+        <table class="table table-hover table" id="scroll">
+          <thead>
+            <tr class="bg-primary" style="color: white;">
+              <th scope="col">System Name </th>
+              <th scope="col">User NAme</th>
+              <th scope="col">password</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each passwords}}
+            <tr>
+              <td>{{systemName}}</td>
+              <td>{{userName}}</td>
+              <td>{{passWord}}</td>
 
-          <td><a href="/passwords/edit/{{id}}" type="button" class="update btn btn-warning btn-sm"><i
-                class="fa fa-pencil" aria-hidden="true"></i></a></td>
-          <td>
-            <form method="post" action="/passwords/{{id}}?_method=DELETE">
-              <input type="hidden" name="_method" value="DELETE">
-              <input type="submit" class="btn btn-danger btn-sm" value="Delete">
-            </form>
-          </td>
-          {{else}}
-          <p>No Passwords listed</p>
-          {{/each}}
-        </tr>
-      </tbody>
-    </table>
+              <td><a href="/passwords/edit/{{id}}" type="button" class="update btn btn-warning btn-sm"><i
+                    class="fa fa-pencil" aria-hidden="true"></i></a></td>
+              <td>
+                <form method="post" action="/passwords/{{id}}?_method=DELETE">
+                  <input type="hidden" name="_method" value="DELETE">
+                  <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+                </form>
+              </td>
+              {{else}}
+              <p>No Passwords listed</p>
+              {{/each}}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
   </div>
 
 </div>
