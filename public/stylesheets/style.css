@@ -24,6 +24,7 @@ table {
 .logo {
   width: 80px;
   margin: auto;
+  margin-bottom: 50px;
 }
 #navbar {
   -webkit-box-shadow: 0 3px 2px #777;
