@@ -143,9 +143,21 @@ app.get('/passwords/edit/:id', (req, res) => {
     })
 })
 
-//Password /  password Page
+//Password /  password Page  ///displaying passwords related from a user-id
 app.get('/passwords', ensureAuthenticated, (req, res) => {
   Password.find({ user: req.user.id })
+    .sort({ date: 'desc' })
+    .then(passwords => {
+      res.render('passwords/index', {
+        passwords: passwords
+      });
+    });
+});
+
+
+// display all system passwords
+app.get('/all_system_passwords', ensureAuthenticated, (req, res) => {
+  Password.find({})
     .sort({ date: 'desc' })
     .then(passwords => {
       res.render('passwords/index', {
