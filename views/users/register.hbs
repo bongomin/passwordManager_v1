@@ -1,7 +1,24 @@
+<style>
+    body {
+        background-color: #2E363F;
+        padding: 0;
+    }
+
+    a {
+        color: #666;
+    }
+
+    a:hover,
+    a:focus {
+        text-decoration: none;
+        color: #28b779;
+    }
+
+    </body>
+</style>
 <div class="row mt-2">
     <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 mx-auto mt-4">
         <card class="card card-body" id="registerdiv">
-            <img class="logo" src="/img/key_logo.png" alt="Password Manager Logo">
             <h2 class="text-center">Account Registration</h2>
             <form action="/users/register" method="post">
                 <div class="form-group">
@@ -24,7 +41,7 @@
                     <label for="password2"> Confirm Password</label>
                     <input type="password" name="password2" value="{{password2}}" class="form-control" required>
                 </div>
-                <button type="submit" class="btn btn-primary"><i class="fa fa-registered" aria-hidden="true"></i> &nbsp
+                <button type="submit" class="btn btn-success"><i class="fa fa-registered" aria-hidden="true"></i> &nbsp
                     Register</button>
             </form>
         </card>

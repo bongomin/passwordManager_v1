@@ -1,19 +1,31 @@
-<div class="row">
-    <div class=" col-lg-5 col-md-4 col-sm-12 col-xs-12 mx-auto mt-4">
-        <card class="card card-body" id="" style="margin-top: 80px;padding:50px;">
-            {{!-- <img class="logo" src="/img/key_logo.png" alt="Password Manager Logo"> --}}
-            <form method="POST" action="/users/login">
-                <div class="form-group">
-                    <input type="email" name="email" class="form-control" placeholder="Enter Your Email" required>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="css/passwordm-login.css" />
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+<div id="loginbox">
+    <form id="loginform" class="form-vertical" method="POST" action="/users/login">
+        <div class="control-group normal_text">
+            <h3>Pass Keeper</h3>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <div class="main_input_box">
+                    <span class="add-on bg_lg"><i class="icon-user"> </i></span><input type="email" name="email"
+                        class="form-control" placeholder="Enter Your Email" required />
                 </div>
-                <div class="form-group">
-                    <input type="password" name="password" class="form-control" placeholder="Password" required>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <div class="main_input_box">
+                    <span class="add-on bg_ly"><i class="icon-lock"></i></span><input type="password" name="password"
+                        class="form-control" placeholder="Password" required />
                 </div>
-                <button type="submit" class="btn btn-primary">Login</button>
-            </form>
-        </card>
-    </div>
-</div>
-<div class="row pull-right m-2" style="margin-bottom: 300px;">
-    Abc Capital Bank &nbsp | &nbsp <small>1.0</small>
+            </div>
+        </div>
+        <div class="form-actions">
+            <span class="pull-right"> <button type="submit" class="btn btn-success">Login</button></span>
+        </div>
+    </form>
 </div>

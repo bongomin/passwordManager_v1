@@ -1,49 +1,60 @@
-<div class="row">
-  <div class="col-md-12 col-sm-12 col-lg-12 mb-2">
-    <div class="row">
-      <div class="col-12 col-auto">
-        <h3> <i class="fa fa-key" style="font-size: 25px; color:blue;" aria-hidden="true"></i>&nbsp Systems Informations
-        </h3>
-        <hr>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <table class="table table-hover table" id="scroll">
-          <thead>
-            <tr class="bg-primary" style="color: white;">
-              <th scope="col">System Name </th>
-              <th scope="col">User NAme</th>
-              <th scope="col">password</th>
-              <th scope="col">Edit</th>
-              <th scope="col">Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{#each passwords}}
-            <tr>
-              <td>{{systemName}}</td>
-              <td>{{userName}}</td>
-              <td>{{passWord}}</td>
-
-              <td><a href="/passwords/edit/{{id}}" type="button" class="update btn btn-warning btn-sm"><i
-                    class="fa fa-pencil" aria-hidden="true"></i></a></td>
-              <td>
-                <form method="post" action="/passwords/{{id}}?_method=DELETE">
-                  <input type="hidden" name="_method" value="DELETE">
-                  <input type="submit" class="btn btn-danger btn-sm" value="Delete">
-                </form>
-              </td>
-              {{else}}
-              <p>No Passwords listed</p>
-              {{/each}}
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-    </div>
-
+<link rel="stylesheet" href="css/matrix-style.css" />
+<link rel="stylesheet" href="css/matrix-media.css" />
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link rel="stylesheet" href="css/uniform.css" />
+<link rel="stylesheet" href="css/select2.css" />
+<link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a
+        href="#" class="current">Passwords</a> </div>
   </div>
+  <div class="container-fluid">
+    <hr>
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
+            <h5>System Passwords</h5>
 
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>System Name</th>
+                  <th>User NAme</th>
+                  <th>password(s)</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each passwords}}
+                <tr>
+                  <td>{{systemName}}</td>
+                  <td>{{userName}}</td>
+                  <td>{{passWord}}</td>
+
+                  <td class="center"><a href="/passwords/edit/{{id}}" type="button"
+                      class="update btn btn-warning btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                  <td class="center">
+                    <form method="post" action="/passwords/{{id}}?_method=DELETE">
+                      <input type="hidden" name="_method" value="DELETE">
+                      <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+                    </form>
+                  </td>
+                  {{else}}
+                  <p>No Passwords listed</p>
+                  {{/each}}
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
